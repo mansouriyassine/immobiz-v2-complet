@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Source+Sans+Pro:wght@400;600&display=swap');
+      
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Source Sans Pro', sans-serif;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #f5f7fa;
+        color: #333333;
+        overflow: hidden;
+        position: relative;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Montserrat', sans-serif;
+        color: #003366;
+      }
+      
+      .accent {
+        color: #FF6B00;
+      }
+      
+      .navy-bg {
+        background-color: #003366;
+      }
+      
+      .orange-bg {
+        background-color: #FF6B00;
+      }
+      
+      .feature-box {
+        border-left: 4px solid #FF6B00;
+        transition: all 0.3s ease;
+      }
+      
+      .feature-box:hover {
+        transform: translateX(5px);
+      }
+      
+      .screenshot {
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        border: 1px solid #E5E5E5;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container p-10">
+      <div class="mb-6">
+        <h1 class="text-4xl font-bold">Interface Publique</h1>
+        <div class="w-24 h-1 orange-bg mt-2"></div>
+      </div>
+      
+      <div class="flex">
+        <!-- Left column: Screenshot -->
+        <div class="w-3/5 pr-8">
+          <div class="mb-4">
+            <img src="/home/ubuntu/upload/search_images/so9gnRBKHG9i.jpg" alt="Interface publique ImmoBiz" class="screenshot" style="height: 480px; width: auto;">
+          </div>
+          <div class="flex justify-between items-center mt-4">
+            <div class="flex items-center">
+              <div class="navy-bg text-white p-2 rounded-full">
+                <i class="fas fa-globe"></i>
+              </div>
+              <div class="ml-2">
+                <p class="text-sm">URL publique</p>
+                <p class="text-xs text-gray-600">https://nnyzlsfb.manus.space</p>
+              </div>
+            </div>
+            
+            <div class="flex items-center">
+              <div class="orange-bg text-white p-2 rounded-full">
+                <i class="fas fa-mobile-alt"></i>
+              </div>
+              <div class="ml-2">
+                <p class="text-sm">Design responsive</p>
+                <p class="text-xs text-gray-600">Mobile, tablette et desktop</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Right column: Features -->
+        <div class="w-2/5">
+          <div class="mb-6">
+            <h3 class="text-2xl font-semibold mb-4">Fonctionnalités principales</h3>
+            
+            <div class="space-y-4">
+              <div class="feature-box bg-white p-4 pl-6">
+                <h4 class="font-semibold flex items-center">
+                  <i class="fas fa-search text-lg mr-2 accent"></i>
+                  Recherche de lotissements
+                </h4>
+                <p class="text-gray-600 text-sm mt-1">
+                  Filtrage par ville, région et type de lotissement avec barre de recherche intuitive.
+                </p>
+              </div>
+              
+              <div class="feature-box bg-white p-4 pl-6">
+                <h4 class="font-semibold flex items-center">
+                  <i class="fas fa-map-marked-alt text-lg mr-2 accent"></i>
+                  Carte interactive
+                </h4>
+                <p class="text-gray-600 text-sm mt-1">
+                  Visualisation géographique des lotissements avec informations détaillées sur les parcelles.
+                </p>
+              </div>
+              
+              <div class="feature-box bg-white p-4 pl-6">
+                <h4 class="font-semibold flex items-center">
+                  <i class="fas fa-sort-amount-down text-lg mr-2 accent"></i>
+                  Classement par disponibilité
+                </h4>
+                <p class="text-gray-600 text-sm mt-1">
+                  Tri intelligent des lotissements par surface disponible pour maximiser les opportunités.
+                </p>
+              </div>
+              
+              <div class="feature-box bg-white p-4 pl-6">
+                <h4 class="font-semibold flex items-center">
+                  <i class="fas fa-info-circle text-lg mr-2 accent"></i>
+                  Fiches détaillées
+                </h4>
+                <p class="text-gray-600 text-sm mt-1">
+                  Informations complètes sur chaque lotissement : prix, surface, disponibilité, promoteur.
+                </p>
+              </div>
+              
+              <div class="feature-box bg-white p-4 pl-6">
+                <h4 class="font-semibold flex items-center">
+                  <i class="fas fa-envelope text-lg mr-2 accent"></i>
+                  Formulaire de contact
+                </h4>
+                <p class="text-gray-600 text-sm mt-1">
+                  Prise de contact directe avec le promoteur pour chaque lotissement.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-6">
+            <div style="height: 120px;">
+              <canvas id="lotissementChart"></canvas>
+            </div>
+            <p class="text-xs text-gray-500 text-center mt-2">Répartition des types de lotissements disponibles</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="absolute bottom-4 right-10 text-sm text-gray-500">
+        <p>ImmoBiz V2 | Interface Publique</p>
+      </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Chart for lotissement types
+        const ctx = document.getElementById('lotissementChart').getContext('2d');
+        const lotissementChart = new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            labels: ['Résidentiel', 'Commercial', 'Industriel', 'Terrain particulier'],
+            datasets: [{
+              data: [65, 15, 12, 8],
+              backgroundColor: [
+                '#003366',
+                '#FF6B00',
+                '#5D87B4',
+                '#FFB366'
+              ],
+              borderColor: '#FFFFFF',
+              borderWidth: 2
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: 'right',
+                labels: {
+                  font: {
+                    family: 'Source Sans Pro',
+                    size: 12
+                  },
+                  color: '#333333'
+                }
+              },
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    return context.label + ': ' + context.raw + '%';
+                  }
+                }
+              }
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+

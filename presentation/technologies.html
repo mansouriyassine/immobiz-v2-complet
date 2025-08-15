@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Source+Sans+Pro:wght@400;600&display=swap');
+      
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Source Sans Pro', sans-serif;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #f5f7fa;
+        color: #333333;
+        overflow: hidden;
+        position: relative;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Montserrat', sans-serif;
+        color: #003366;
+      }
+      
+      .accent {
+        color: #FF6B00;
+      }
+      
+      .navy-bg {
+        background-color: #003366;
+      }
+      
+      .orange-bg {
+        background-color: #FF6B00;
+      }
+      
+      .tech-card {
+        transition: all 0.3s ease;
+        border: 1px solid #E5E5E5;
+      }
+      
+      .tech-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      }
+      
+      .tech-logo {
+        height: 60px;
+        width: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+      }
+      
+      .tech-logo i {
+        font-size: 2.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container p-10">
+      <div class="mb-6">
+        <h1 class="text-4xl font-bold">Technologies Utilisées</h1>
+        <div class="w-24 h-1 orange-bg mt-2"></div>
+      </div>
+      
+      <div class="flex">
+        <!-- Left column: Tech stack visualization -->
+        <div class="w-1/2 pr-8">
+          <div style="height: 500px;">
+            <canvas id="techStackChart"></canvas>
+          </div>
+          <p class="text-sm text-center text-gray-600 mt-4">
+            Architecture technique de la plateforme ImmoBiz V2
+          </p>
+        </div>
+        
+        <!-- Right column: Technology details -->
+        <div class="w-1/2">
+          <div class="grid grid-cols-2 gap-6">
+            <!-- Frontend -->
+            <div class="tech-card bg-white rounded-lg p-6">
+              <h3 class="text-xl font-semibold mb-4 text-center">Frontend</h3>
+              <div class="space-y-4">
+                <div class="flex items-center">
+                  <div class="tech-logo text-blue-600">
+                    <i class="fab fa-react"></i>
+                  </div>
+                  <div class="ml-4">
+                    <h4 class="font-semibold">React.js</h4>
+                    <p class="text-sm text-gray-600">Bibliothèque JavaScript pour construire des interfaces utilisateur interactives</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-center">
+                  <div class="tech-logo text-blue-400">
+                    <i class="fab fa-css3-alt"></i>
+                  </div>
+                  <div class="ml-4">
+                    <h4 class="font-semibold">Tailwind CSS</h4>
+                    <p class="text-sm text-gray-600">Framework CSS utilitaire pour un design responsive et moderne</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-center">
+                  <div class="tech-logo text-green-600">
+                    <i class="fas fa-chart-line"></i>
+                  </div>
+                  <div class="ml-4">
+                    <h4 class="font-semibold">Chart.js</h4>
+                    <p class="text-sm text-gray-600">Bibliothèque de visualisation de données pour les statistiques</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Backend -->
+            <div class="tech-card bg-white rounded-lg p-6">
+              <h3 class="text-xl font-semibold mb-4 text-center">Backend</h3>
+              <div class="space-y-4">
+                <div class="flex items-center">
+                  <div class="tech-logo text-green-700">
+                    <i class="fab fa-python"></i>
+                  </div>
+                  <div class="ml-4">
+                    <h4 class="font-semibold">Flask</h4>
+                    <p class="text-sm text-gray-600">Framework Python léger pour le développement d'API REST</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-center">
+                  <div class="tech-logo text-blue-800">
+                    <i class="fas fa-database"></i>
+                  </div>
+                  <div class="ml-4">
+                    <h4 class="font-semibold">SQLite</h4>
+                    <p class="text-sm text-gray-600">Base de données légère et performante pour le stockage des données</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-center">
+                  <div class="tech-logo text-gray-700">
+                    <i class="fas fa-code"></i>
+                  </div>
+                  <div class="ml-4">
+                    <h4 class="font-semibold">SQLAlchemy</h4>
+                    <p class="text-sm text-gray-600">ORM Python pour la manipulation des données relationnelles</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Services -->
+            <div class="tech-card bg-white rounded-lg p-6">
+              <h3 class="text-xl font-semibold mb-4 text-center">Services</h3>
+              <div class="space-y-4">
+                <div class="flex items-center">
+                  <div class="tech-logo text-red-600">
+                    <i class="fas fa-map-marked-alt"></i>
+                  </div>
+                  <div class="ml-4">
+                    <h4 class="font-semibold">Services cartographiques</h4>
+                    <p class="text-sm text-gray-600">Visualisation géographique des lotissements et parcelles</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-center">
+                  <div class="tech-logo text-purple-600">
+                    <i class="fas fa-lock"></i>
+                  </div>
+                  <div class="ml-4">
+                    <h4 class="font-semibold">Authentification</h4>
+                    <p class="text-sm text-gray-600">Gestion sécurisée des accès utilisateurs et promoteurs</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Déploiement -->
+            <div class="tech-card bg-white rounded-lg p-6">
+              <h3 class="text-xl font-semibold mb-4 text-center">Déploiement</h3>
+              <div class="space-y-4">
+                <div class="flex items-center">
+                  <div class="tech-logo text-blue-500">
+                    <i class="fas fa-cloud"></i>
+                  </div>
+                  <div class="ml-4">
+                    <h4 class="font-semibold">Cloud Hosting</h4>
+                    <p class="text-sm text-gray-600">Hébergement cloud pour une disponibilité optimale</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-center">
+                  <div class="tech-logo text-green-500">
+                    <i class="fas fa-server"></i>
+                  </div>
+                  <div class="ml-4">
+                    <h4 class="font-semibold">API REST</h4>
+                    <p class="text-sm text-gray-600">Architecture orientée services pour la communication client-serveur</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="absolute bottom-4 right-10 text-sm text-gray-500">
+        <p>ImmoBiz V2 | Technologies</p>
+      </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Tech stack visualization
+        const ctx = document.getElementById('techStackChart').getContext('2d');
+        
+        const techStackChart = new Chart(ctx, {
+          type: 'radar',
+          data: {
+            labels: [
+              'Performance',
+              'Sécurité',
+              'Évolutivité',
+              'Facilité de développement',
+              'Expérience utilisateur',
+              'Maintenance'
+            ],
+            datasets: [
+              {
+                label: 'Frontend (React.js)',
+                data: [85, 75, 90, 95, 95, 85],
+                backgroundColor: 'rgba(0, 51, 102, 0.2)',
+                borderColor: '#003366',
+                borderWidth: 2,
+                pointBackgroundColor: '#003366'
+              },
+              {
+                label: 'Backend (Flask)',
+                data: [80, 85, 80, 90, 75, 90],
+                backgroundColor: 'rgba(255, 107, 0, 0.2)',
+                borderColor: '#FF6B00',
+                borderWidth: 2,
+                pointBackgroundColor: '#FF6B00'
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              r: {
+                angleLines: {
+                  display: true,
+                  color: 'rgba(0, 0, 0, 0.1)'
+                },
+                suggestedMin: 0,
+                suggestedMax: 100,
+                ticks: {
+                  stepSize: 20,
+                  backdropColor: 'transparent'
+                }
+              }
+            },
+            plugins: {
+              legend: {
+                position: 'bottom',
+                labels: {
+                  font: {
+                    family: 'Source Sans Pro',
+                    size: 12
+                  }
+                }
+              },
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    return context.dataset.label + ': ' + context.raw + '/100';
+                  }
+                }
+              }
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,34 @@
+@'
+# Dependencies
+node_modules/
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Build output
+dist/
+build/
+out/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Backend specific
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+*.sqlite3
+*.db
+
+# Frontend specific
+.cache/
+.tmp/
+'@ | Out-File -FilePath .gitignore -Encoding utf8

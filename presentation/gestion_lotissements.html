@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Source+Sans+Pro:wght@400;600&display=swap');
+      
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Source Sans Pro', sans-serif;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #f5f7fa;
+        color: #333333;
+        overflow: hidden;
+        position: relative;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Montserrat', sans-serif;
+        color: #003366;
+      }
+      
+      .accent {
+        color: #FF6B00;
+      }
+      
+      .navy-bg {
+        background-color: #003366;
+      }
+      
+      .orange-bg {
+        background-color: #FF6B00;
+      }
+      
+      .status-badge {
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      
+      .status-disponible {
+        background-color: #e6f7ee;
+        color: #0d8a4e;
+      }
+      
+      .status-vendu {
+        background-color: #fde8e8;
+        color: #e02424;
+      }
+      
+      .status-reserve {
+        background-color: #fef3c7;
+        color: #d97706;
+      }
+      
+      .lotissement-card {
+        transition: all 0.3s ease;
+        border: 1px solid #E5E5E5;
+      }
+      
+      .lotissement-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container p-10">
+      <div class="mb-6">
+        <h1 class="text-4xl font-bold">Gestion des Lotissements</h1>
+        <div class="w-24 h-1 orange-bg mt-2"></div>
+      </div>
+      
+      <div class="flex">
+        <!-- Left column: Screenshot and features -->
+        <div class="w-1/2 pr-6">
+          <div class="mb-6">
+            <img src="/home/ubuntu/upload/search_images/XzLRNHaTruMi.jpg" alt="Interface de gestion des lotissements" class="rounded-lg shadow-lg border border-gray-200" style="height: 300px; width: auto;">
+          </div>
+          
+          <div class="mt-6">
+            <h3 class="text-2xl font-semibold mb-4">Fonctionnalités clés</h3>
+            
+            <div class="space-y-3">
+              <div class="flex items-start">
+                <div class="flex-shrink-0 mt-1">
+                  <i class="fas fa-map-marker-alt text-lg accent"></i>
+                </div>
+                <div class="ml-4">
+                  <h4 class="font-semibold">Gestion des parcelles</h4>
+                  <p class="text-gray-600 text-sm">
+                    Suivi en temps réel des statuts (disponible, vendu, réservé) avec mise à jour automatique des statistiques.
+                  </p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="flex-shrink-0 mt-1">
+                  <i class="fas fa-draw-polygon text-lg accent"></i>
+                </div>
+                <div class="ml-4">
+                  <h4 class="font-semibold">Contours géographiques</h4>
+                  <p class="text-gray-600 text-sm">
+                    Définition précise des contours des lotissements et parcelles avec coordonnées GPS.
+                  </p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="flex-shrink-0 mt-1">
+                  <i class="fas fa-chart-line text-lg accent"></i>
+                </div>
+                <div class="ml-4">
+                  <h4 class="font-semibold">Statistiques détaillées</h4>
+                  <p class="text-gray-600 text-sm">
+                    Analyse des performances par lotissement avec calcul automatique des surfaces et prix moyens.
+                  </p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="flex-shrink-0 mt-1">
+                  <i class="fas fa-users text-lg accent"></i>
+                </div>
+                <div class="ml-4">
+                  <h4 class="font-semibold">Gestion des leads</h4>
+                  <p class="text-gray-600 text-sm">
+                    Suivi des contacts intéressés par lotissement avec historique des communications.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Right column: Lotissement cards and chart -->
+        <div class="w-1/2 pl-6">
+          <div class="mb-6">
+            <h3 class="text-xl font-semibold mb-3">Exemple de lotissements</h3>
+            
+            <div class="space-y-4">
+              <!-- Lotissement Card 1 -->
+              <div class="lotissement-card bg-white rounded-lg p-4">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h4 class="font-semibold">Résidence Al Manar</h4>
+                    <p class="text-sm text-gray-600">Casablanca, Grand Casablanca</p>
+                  </div>
+                  <span class="status-badge status-disponible">Actif</span>
+                </div>
+                
+                <div class="flex justify-between mt-3 text-sm">
+                  <div>
+                    <p class="text-gray-600">Parcelles:</p>
+                    <div class="flex space-x-2 mt-1">
+                      <span class="status-badge status-disponible">28 disponibles</span>
+                      <span class="status-badge status-vendu">12 vendues</span>
+                      <span class="status-badge status-reserve">5 réservées</span>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <p class="text-gray-600">Chiffre d'affaires:</p>
+                    <p class="font-semibold">8.500.000 MAD</p>
+                  </div>
+                </div>
+                
+                <div class="mt-3">
+                  <div class="flex justify-between text-xs text-gray-600 mb-1">
+                    <span>Disponibilité</span>
+                    <span>57%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-orange-accent h-2 rounded-full" style="width: 57%"></div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Lotissement Card 2 -->
+              <div class="lotissement-card bg-white rounded-lg p-4">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h4 class="font-semibold">Villa Prestige Marrakech</h4>
+                    <p class="text-sm text-gray-600">Marrakech, Marrakech-Safi</p>
+                  </div>
+                  <span class="status-badge status-disponible">Actif</span>
+                </div>
+                
+                <div class="flex justify-between mt-3 text-sm">
+                  <div>
+                    <p class="text-gray-600">Parcelles:</p>
+                    <div class="flex space-x-2 mt-1">
+                      <span class="status-badge status-disponible">22 disponibles</span>
+                      <span class="status-badge status-vendu">6 vendues</span>
+                      <span class="status-badge status-reserve">2 réservées</span>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <p class="text-gray-600">Chiffre d'affaires:</p>
+                    <p class="font-semibold">4.750.000 MAD</p>
+                  </div>
+                </div>
+                
+                <div class="mt-3">
+                  <div class="flex justify-between text-xs text-gray-600 mb-1">
+                    <span>Disponibilité</span>
+                    <span>75%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-orange-accent h-2 rounded-full" style="width: 75%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-6">
+            <h3 class="text-xl font-semibold mb-3">Statuts des parcelles</h3>
+            <div style="height: 180px;">
+              <canvas id="parcellesChart"></canvas>
+            </div>
+            <p class="text-xs text-gray-500 text-center mt-2">Répartition des statuts de parcelles sur l'ensemble des lotissements</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="absolute bottom-4 right-10 text-sm text-gray-500">
+        <p>ImmoBiz V2 | Gestion des Lotissements</p>
+      </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Chart for parcelles status
+        const ctx = document.getElementById('parcellesChart').getContext('2d');
+        const parcellesChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['Disponibles', 'Vendues', 'Réservées'],
+            datasets: [{
+              label: 'Nombre de parcelles',
+              data: [71, 28, 11],
+              backgroundColor: [
+                '#0d8a4e',
+                '#e02424',
+                '#d97706'
+              ],
+              borderColor: [
+                '#0d8a4e',
+                '#e02424',
+                '#d97706'
+              ],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: false
+              },
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    return context.raw + ' parcelles';
+                  }
+                }
+              }
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                title: {
+                  display: true,
+                  text: 'Nombre de parcelles',
+                  font: {
+                    family: 'Source Sans Pro',
+                    size: 12
+                  }
+                }
+              },
+              x: {
+                title: {
+                  display: true,
+                  text: 'Statut',
+                  font: {
+                    family: 'Source Sans Pro',
+                    size: 12
+                  }
+                }
+              }
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+

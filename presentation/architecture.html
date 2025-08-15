@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Source+Sans+Pro:wght@400;600&display=swap');
+      
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Source Sans Pro', sans-serif;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #f5f7fa;
+        color: #333333;
+        overflow: hidden;
+        position: relative;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Montserrat', sans-serif;
+        color: #003366;
+      }
+      
+      .accent {
+        color: #FF6B00;
+      }
+      
+      .navy-bg {
+        background-color: #003366;
+      }
+      
+      .orange-bg {
+        background-color: #FF6B00;
+      }
+      
+      .architecture-box {
+        border: 2px solid #E5E5E5;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+      
+      .architecture-box:hover {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        transform: translateY(-5px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container p-10">
+      <div class="mb-8">
+        <h1 class="text-4xl font-bold">Architecture du Système</h1>
+        <div class="w-24 h-1 orange-bg mt-2"></div>
+      </div>
+      
+      <div class="flex flex-col items-center">
+        <div class="w-full mb-10">
+          <div class="flex justify-center items-center mb-6">
+            <div class="w-full max-w-4xl">
+              <div style="height: 380px;">
+                <svg id="architecture-diagram" width="100%" height="100%"></svg>
+              </div>
+            </div>
+          </div>
+          
+          <div class="grid grid-cols-3 gap-6 mt-4">
+            <div class="architecture-box p-4 bg-white">
+              <h3 class="text-xl font-semibold mb-2 flex items-center">
+                <i class="fas fa-globe text-xl mr-2 accent"></i>
+                Interface Publique
+              </h3>
+              <p class="text-gray-700">
+                Frontend React.js accessible aux utilisateurs pour découvrir les lotissements disponibles et explorer la carte interactive.
+              </p>
+            </div>
+            
+            <div class="architecture-box p-4 bg-white">
+              <h3 class="text-xl font-semibold mb-2 flex items-center">
+                <i class="fas fa-building text-xl mr-2 accent"></i>
+                Interface Promoteur
+              </h3>
+              <p class="text-gray-700">
+                Dashboard sécurisé permettant aux promoteurs de gérer leurs lotissements, parcelles et suivre les leads.
+              </p>
+            </div>
+            
+            <div class="architecture-box p-4 bg-white">
+              <h3 class="text-xl font-semibold mb-2 flex items-center">
+                <i class="fas fa-cogs text-xl mr-2 accent"></i>
+                Interface Admin
+              </h3>
+              <p class="text-gray-700">
+                Panneau d'administration pour superviser l'ensemble des promoteurs, lotissements et utilisateurs.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="w-full flex justify-between items-center mt-4">
+          <div class="flex items-center">
+            <div class="navy-bg text-white p-3 rounded-full">
+              <i class="fas fa-server"></i>
+            </div>
+            <div class="ml-3">
+              <h4 class="font-semibold">Backend Flask</h4>
+              <p class="text-sm text-gray-600">API REST, Authentification, Base de données</p>
+            </div>
+          </div>
+          
+          <div class="flex items-center">
+            <div class="orange-bg text-white p-3 rounded-full">
+              <i class="fas fa-database"></i>
+            </div>
+            <div class="ml-3">
+              <h4 class="font-semibold">Base de données</h4>
+              <p class="text-sm text-gray-600">SQLite avec SQLAlchemy ORM</p>
+            </div>
+          </div>
+          
+          <div class="flex items-center">
+            <div class="navy-bg text-white p-3 rounded-full">
+              <i class="fas fa-map-marked-alt"></i>
+            </div>
+            <div class="ml-3">
+              <h4 class="font-semibold">Services cartographiques</h4>
+              <p class="text-sm text-gray-600">Visualisation des lotissements et parcelles</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="absolute bottom-4 right-10 text-sm text-gray-500">
+        <p>ImmoBiz V2 | Architecture</p>
+      </div>
+    </div>
+    
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+      // Architecture diagram using D3.js
+      document.addEventListener('DOMContentLoaded', function() {
+        const svg = d3.select("#architecture-diagram");
+        const width = svg.node().getBoundingClientRect().width;
+        const height = svg.node().getBoundingClientRect().height;
+        
+        // Define the layers
+        const layers = [
+          { name: "Interfaces", y: 50, color: "#003366", textColor: "#FFFFFF" },
+          { name: "API", y: 150, color: "#FF6B00", textColor: "#FFFFFF" },
+          { name: "Services", y: 250, color: "#003366", textColor: "#FFFFFF" },
+          { name: "Base de données", y: 330, color: "#333333", textColor: "#FFFFFF" }
+        ];
+        
+        // Draw the layers
+        svg.selectAll(".layer")
+          .data(layers)
+          .enter()
+          .append("rect")
+          .attr("x", 50)
+          .attr("y", d => d.y)
+          .attr("width", width - 100)
+          .attr("height", 60)
+          .attr("rx", 8)
+          .attr("ry", 8)
+          .attr("fill", d => d.color)
+          .attr("opacity", 0.9);
+        
+        // Add layer labels
+        svg.selectAll(".layer-label")
+          .data(layers)
+          .enter()
+          .append("text")
+          .attr("x", 70)
+          .attr("y", d => d.y + 35)
+          .text(d => d.name)
+          .attr("fill", d => d.textColor)
+          .attr("font-family", "Montserrat")
+          .attr("font-weight", "bold")
+          .attr("font-size", "16px");
+        
+        // Define the components
+        const components = [
+          { name: "Interface Publique", layer: 0, x: width/4 - 50, icon: "\uf0ac" }, // globe
+          { name: "Interface Promoteur", layer: 0, x: width/2, icon: "\uf1ad" }, // building
+          { name: "Interface Admin", layer: 0, x: 3*width/4 + 50, icon: "\uf085" }, // cogs
+          
+          { name: "API REST", layer: 1, x: width/3, icon: "\uf1e6" }, // plug
+          { name: "Authentification", layer: 1, x: 2*width/3, icon: "\uf023" }, // lock
+          
+          { name: "Gestion Lotissements", layer: 2, x: width/4 - 50, icon: "\uf279" }, // map
+          { name: "Gestion Parcelles", layer: 2, x: width/2, icon: "\uf5fd" }, // map-marked
+          { name: "Gestion Utilisateurs", layer: 2, x: 3*width/4 + 50, icon: "\uf0c0" }, // users
+          
+          { name: "SQLite + SQLAlchemy", layer: 3, x: width/2, icon: "\uf1c0" } // database
+        ];
+        
+        // Draw component boxes
+        svg.selectAll(".component")
+          .data(components)
+          .enter()
+          .append("rect")
+          .attr("x", d => d.x - 80)
+          .attr("y", d => layers[d.layer].y + 15)
+          .attr("width", 160)
+          .attr("height", 30)
+          .attr("rx", 15)
+          .attr("ry", 15)
+          .attr("fill", "white")
+          .attr("stroke", d => layers[d.layer].color)
+          .attr("stroke-width", 2);
+        
+        // Add component icons
+        svg.selectAll(".component-icon")
+          .data(components)
+          .enter()
+          .append("text")
+          .attr("x", d => d.x - 65)
+          .attr("y", d => layers[d.layer].y + 35)
+          .attr("font-family", "FontAwesome")
+          .attr("font-size", "14px")
+          .attr("fill", d => layers[d.layer].color)
+          .text(d => d.icon);
+        
+        // Add component labels
+        svg.selectAll(".component-label")
+          .data(components)
+          .enter()
+          .append("text")
+          .attr("x", d => d.x - 45)
+          .attr("y", d => layers[d.layer].y + 35)
+          .text(d => d.name)
+          .attr("fill", "#333333")
+          .attr("font-family", "Source Sans Pro")
+          .attr("font-size", "12px");
+        
+        // Draw connections
+        const connections = [
+          { source: { layer: 0, x: width/4 - 50 }, target: { layer: 1, x: width/3 } },
+          { source: { layer: 0, x: width/2 }, target: { layer: 1, x: width/3 } },
+          { source: { layer: 0, x: 3*width/4 + 50 }, target: { layer: 1, x: width/3 } },
+          
+          { source: { layer: 0, x: width/2 }, target: { layer: 1, x: 2*width/3 } },
+          { source: { layer: 0, x: 3*width/4 + 50 }, target: { layer: 1, x: 2*width/3 } },
+          
+          { source: { layer: 1, x: width/3 }, target: { layer: 2, x: width/4 - 50 } },
+          { source: { layer: 1, x: width/3 }, target: { layer: 2, x: width/2 } },
+          { source: { layer: 1, x: width/3 }, target: { layer: 2, x: 3*width/4 + 50 } },
+          
+          { source: { layer: 2, x: width/4 - 50 }, target: { layer: 3, x: width/2 } },
+          { source: { layer: 2, x: width/2 }, target: { layer: 3, x: width/2 } },
+          { source: { layer: 2, x: 3*width/4 + 50 }, target: { layer: 3, x: width/2 } }
+        ];
+        
+        // Create a line generator
+        const lineGenerator = d3.line()
+          .x(d => d.x)
+          .y(d => d.y)
+          .curve(d3.curveMonotoneY);
+        
+        // Draw the connections
+        svg.selectAll(".connection")
+          .data(connections)
+          .enter()
+          .append("path")
+          .attr("d", d => {
+            const sourceY = layers[d.source.layer].y + 45;
+            const targetY = layers[d.target.layer].y + 15;
+            return lineGenerator([
+              { x: d.source.x, y: sourceY },
+              { x: d.source.x, y: (sourceY + targetY) / 2 },
+              { x: d.target.x, y: (sourceY + targetY) / 2 },
+              { x: d.target.x, y: targetY }
+            ]);
+          })
+          .attr("fill", "none")
+          .attr("stroke", "#999")
+          .attr("stroke-width", 1.5)
+          .attr("stroke-dasharray", "4,2")
+          .attr("opacity", 0.6);
+      });
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Source+Sans+Pro:wght@400;600&display=swap');
+      
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Source Sans Pro', sans-serif;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #f5f7fa;
+        color: #333333;
+        overflow: hidden;
+        position: relative;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Montserrat', sans-serif;
+        color: #003366;
+      }
+      
+      .accent {
+        color: #FF6B00;
+      }
+      
+      .navy-bg {
+        background-color: #003366;
+      }
+      
+      .orange-bg {
+        background-color: #FF6B00;
+      }
+      
+      .feature-item {
+        transition: all 0.3s ease;
+        border-left: 3px solid transparent;
+      }
+      
+      .feature-item:hover {
+        border-left: 3px solid #FF6B00;
+        transform: translateX(5px);
+      }
+      
+      .feature-icon {
+        background: linear-gradient(135deg, #003366 0%, #004080 100%);
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: white;
+        font-size: 24px;
+        box-shadow: 0 4px 10px rgba(0, 51, 102, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container p-10">
+      <div class="mb-6">
+        <h1 class="text-4xl font-bold">Fonctionnalités Clés</h1>
+        <div class="w-24 h-1 orange-bg mt-2"></div>
+      </div>
+      
+      <div class="flex">
+        <!-- Left column: Features -->
+        <div class="w-1/2 pr-8">
+          <div class="space-y-6">
+            <div class="feature-item flex items-start p-4 bg-white rounded-lg shadow-sm">
+              <div class="feature-icon mr-4">
+                <i class="fas fa-map-marked-alt"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-2">Carte Interactive</h3>
+                <p class="text-gray-600">
+                  Visualisation géographique des lotissements avec contours précis des parcelles et statuts en temps réel (disponible, vendu, réservé).
+                </p>
+              </div>
+            </div>
+            
+            <div class="feature-item flex items-start p-4 bg-white rounded-lg shadow-sm">
+              <div class="feature-icon mr-4">
+                <i class="fas fa-user-tag"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-2">Profils Personnalisés</h3>
+                <p class="text-gray-600">
+                  Interfaces dédiées pour chaque type d'utilisateur : visiteurs, promoteurs et administrateurs avec tableaux de bord adaptés.
+                </p>
+              </div>
+            </div>
+            
+            <div class="feature-item flex items-start p-4 bg-white rounded-lg shadow-sm">
+              <div class="feature-icon mr-4">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-2">Statistiques Avancées</h3>
+                <p class="text-gray-600">
+                  Suivi détaillé des performances par lotissement, taux de conversion des leads et prévisions de vente pour les promoteurs.
+                </p>
+              </div>
+            </div>
+            
+            <div class="feature-item flex items-start p-4 bg-white rounded-lg shadow-sm">
+              <div class="feature-icon mr-4">
+                <i class="fas fa-bell"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-2">Système de Notifications</h3>
+                <p class="text-gray-600">
+                  Alertes en temps réel pour les nouveaux leads, changements de statut des parcelles et mises à jour importantes.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Right column: Image and chart -->
+        <div class="w-1/2">
+          <div class="mb-6">
+            <img src="/home/ubuntu/upload/search_images/mc5svRvR7JU2.webp" alt="Dashboard immobilier avec carte et statistiques" class="rounded-lg shadow-lg" style="height: 300px; width: auto; margin: 0 auto;">
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-xl font-semibold mb-4">Avantages par profil utilisateur</h3>
+            <div style="height: 250px;">
+              <canvas id="featuresChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="absolute bottom-4 right-10 text-sm text-gray-500">
+        <p>ImmoBiz V2 | Fonctionnalités Clés</p>
+      </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Chart for features by user profile
+        const ctx = document.getElementById('featuresChart').getContext('2d');
+        const featuresChart = new Chart(ctx, {
+          type: 'radar',
+          data: {
+            labels: [
+              'Recherche avancée',
+              'Carte interactive',
+              'Gestion parcelles',
+              'Statistiques',
+              'Notifications',
+              'Personnalisation'
+            ],
+            datasets: [
+              {
+                label: 'Visiteurs',
+                data: [90, 80, 30, 20, 40, 50],
+                backgroundColor: 'rgba(0, 51, 102, 0.2)',
+                borderColor: '#003366',
+                borderWidth: 2,
+                pointBackgroundColor: '#003366'
+              },
+              {
+                label: 'Promoteurs',
+                data: [60, 90, 95, 85, 90, 70],
+                backgroundColor: 'rgba(255, 107, 0, 0.2)',
+                borderColor: '#FF6B00',
+                borderWidth: 2,
+                pointBackgroundColor: '#FF6B00'
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              r: {
+                angleLines: {
+                  display: true,
+                  color: 'rgba(0, 0, 0, 0.1)'
+                },
+                suggestedMin: 0,
+                suggestedMax: 100,
+                ticks: {
+                  stepSize: 20,
+                  backdropColor: 'transparent'
+                }
+              }
+            },
+            plugins: {
+              legend: {
+                position: 'bottom',
+                labels: {
+                  font: {
+                    family: 'Source Sans Pro',
+                    size: 12
+                  }
+                }
+              },
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    return context.dataset.label + ': ' + context.raw + '%';
+                  }
+                }
+              }
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+
